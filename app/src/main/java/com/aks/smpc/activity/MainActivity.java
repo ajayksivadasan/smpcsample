@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         }
         cameraProviderFuture = ProcessCameraProvider.getInstance(context);
         rvFishList.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
-        rvFishList.setAdapter(new ListCapturedImagesAdapter(new ArrayList<>(), context));
+        setAdapter();
         btSignIn.setOnClickListener(v -> {
             captureImage();
         });
@@ -102,9 +102,19 @@ public class MainActivity extends AppCompatActivity {
             llAdd.setVisibility(View.GONE);
             btAdd.setVisibility(View.GONE);
             startCamera();
-            rvFishList.setAdapter(new ListCapturedImagesAdapter(tableDAO.getAllTAbleDAta(), context));
+
         });
     }
+
+    private void setAdapter() {
+        ListCapturedImagesAdapter listCapturedImagesAdapter=new ListCapturedImagesAdapter(tableDAO.getAllTAbleDAta(), context);
+        listCapturedImagesAdapter.setInterface(tableData ->{
+            tableDAO.deleteData(tableData);
+            setAdapter();
+        });
+        rvFishList.setAdapter(listCapturedImagesAdapter);
+    }
+
     private boolean checkPermissions() {
         return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_GRANTED || ActivityCompat.checkSelfPermission(this,

@@ -1,6 +1,7 @@
 package com.aks.smpc.di;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 
@@ -14,4 +15,6 @@ public interface TableDAO {
     List<TableData> getAllTAbleDAta();
     @Insert
     void insertData(TableData tableData);
+    @Delete
+    void deleteData(TableData tableData);
 }

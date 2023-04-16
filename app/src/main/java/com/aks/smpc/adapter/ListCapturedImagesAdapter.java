@@ -44,22 +44,33 @@ public class ListCapturedImagesAdapter extends RecyclerView.Adapter<ListCaptured
                 .skipMemoryCache(true)
                 .into(holder.imvShowImage);
         holder.tvDateTime.setText(tableDataList.get(position).getString2());
+        holder.imvDelete.setOnClickListener(v -> {
+            clickedAdapterListener.clickedDelete(tableDataList.get(position));
+        });
     }
 
     @Override
     public int getItemCount() {
         return tableDataList.size();
     }
-
+    ClickedAdapter clickedAdapterListener;
+public void setInterface(ClickedAdapter clickedAdapterListener){
+        this.clickedAdapterListener=clickedAdapterListener;
+}
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvFileName;
         TextView tvDateTime;
         ImageView imvShowImage;
+        ImageView imvDelete;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFileName=itemView.findViewById(R.id.tvFileName);
             tvDateTime=itemView.findViewById(R.id.tvDateTime);
             imvShowImage=itemView.findViewById(R.id.imvShowImage);
+            imvDelete=itemView.findViewById(R.id.imvDelete);
         }
+    }
+    public interface ClickedAdapter {
+        void clickedDelete(TableData tableData);
     }
 }
