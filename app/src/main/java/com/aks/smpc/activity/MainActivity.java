@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     llPreview.setVisibility(View.GONE);
                     imgPreview.setVisibility(View.VISIBLE);
                     btSignIn.setVisibility(View.GONE);
-                    llAdd.setVisibility(View.VISIBLE);
+                    llAdd.setVisibility(View.GONE);
                     btAdd.setVisibility(View.VISIBLE);
                     try {
                         cameraProviderFuture.get().unbindAll();
