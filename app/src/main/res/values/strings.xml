@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SMPC DB Operations</string>
+    <string name="upload_images">Upload Images</string>
+    <string name="select_fish_names">Fish Names</string>
+</resources>
