@@ -93,7 +93,7 @@
                 android:id="@+id/llAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/etFishSpecies"
@@ -147,7 +147,8 @@
                 android:layout_marginBottom="@dimen/dimen_10dp"
                 android:background="@drawable/bt_bg_round_white_black_strokes"
                 android:text="Finish"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

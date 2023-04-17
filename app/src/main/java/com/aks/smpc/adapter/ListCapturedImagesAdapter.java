@@ -21,9 +21,9 @@ public class ListCapturedImagesAdapter extends RecyclerView.Adapter<ListCaptured
     List<TableData> tableDataList;
     Context context;
 
-    public ListCapturedImagesAdapter(List<TableData> tableDataList,Context context) {
-        this.tableDataList=tableDataList;
-        this.context=context;
+    public ListCapturedImagesAdapter(List<TableData> tableDataList, Context context) {
+        this.tableDataList = tableDataList;
+        this.context = context;
     }
 
     @NonNull
@@ -53,23 +53,28 @@ public class ListCapturedImagesAdapter extends RecyclerView.Adapter<ListCaptured
     public int getItemCount() {
         return tableDataList.size();
     }
+
     ClickedAdapter clickedAdapterListener;
-public void setInterface(ClickedAdapter clickedAdapterListener){
-        this.clickedAdapterListener=clickedAdapterListener;
-}
+
+    public void setInterface(ClickedAdapter clickedAdapterListener) {
+        this.clickedAdapterListener = clickedAdapterListener;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvFileName;
         TextView tvDateTime;
         ImageView imvShowImage;
         ImageView imvDelete;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvFileName=itemView.findViewById(R.id.tvFileName);
-            tvDateTime=itemView.findViewById(R.id.tvDateTime);
-            imvShowImage=itemView.findViewById(R.id.imvShowImage);
-            imvDelete=itemView.findViewById(R.id.imvDelete);
+            tvFileName = itemView.findViewById(R.id.tvFileName);
+            tvDateTime = itemView.findViewById(R.id.tvDateTime);
+            imvShowImage = itemView.findViewById(R.id.imvShowImage);
+            imvDelete = itemView.findViewById(R.id.imvDelete);
         }
     }
+
     public interface ClickedAdapter {
         void clickedDelete(TableData tableData);
     }

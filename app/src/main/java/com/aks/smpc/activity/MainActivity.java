@@ -31,7 +31,9 @@ import android.widget.LinearLayout;
 import com.aks.smpc.R;
 import com.aks.smpc.adapter.ListCapturedImagesAdapter;
 import com.aks.smpc.data.TableData;
+import com.aks.smpc.di.Table2DAO;
 import com.aks.smpc.di.TableDAO;
+import com.aks.smpc.utils.RoomDBase;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.common.util.concurrent.ListenableFuture;
@@ -96,13 +98,14 @@ public class MainActivity extends AppCompatActivity {
             SimpleDateFormat sdfImage = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss:a", Locale.getDefault());
             tableData.setString2(sdfImage.format(Calendar.getInstance().getTimeInMillis()));
             tableDAO.insertData(tableData);
+            Table2DAO table2DAO= RoomDBase.provideRoomDb(context).providesTable2DAO();
             llPreview.setVisibility(View.VISIBLE);
             imgPreview.setVisibility(View.GONE);
             btSignIn.setVisibility(View.VISIBLE);
             llAdd.setVisibility(View.GONE);
             btAdd.setVisibility(View.GONE);
             startCamera();
-
+setAdapter();
         });
     }
 
